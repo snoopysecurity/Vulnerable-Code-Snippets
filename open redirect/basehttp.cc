@@ -1,4 +1,4 @@
-// From methods/basehttp.cc
+// From methods/basehttp.cc https://justi.cz/security/2019/01/22/apt-rce.html
 NextURI = DeQuoteString(Req.Location);
 ...
 Redirect(NextURI);
