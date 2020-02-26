@@ -7,3 +7,4 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf("Welcome, %s!", name);
 	return 0;
 } }
+
