@@ -1,3 +1,5 @@
+//https://html5.digi.ninja/challenge.html
+
 if (typeof(SERVER_DOMAIN) === 'undefined') {
 	window.location.replace("/unconfigured.html");
 }
