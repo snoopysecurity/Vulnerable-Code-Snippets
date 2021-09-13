@@ -1,0 +1,2 @@
+
+var password = 'mysecretpassword123';
