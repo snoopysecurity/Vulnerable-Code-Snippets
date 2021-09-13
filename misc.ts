@@ -1,1 +1,0 @@
-var password = 'mysecretpassword123';
