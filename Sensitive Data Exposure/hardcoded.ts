@@ -1,2 +1,5 @@
 
-var password = 'mysecretpassword123';
+var password = 'mysecretpass'; 
+
+const fooPassword = 'mysecretpass'; 
+
