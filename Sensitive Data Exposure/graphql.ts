@@ -6,9 +6,9 @@ import NoIntrospection from 'graphql-disable-introspection';
 const myGraphQLSchema = MySessionAwareGraphQLSchema;// ... define or import your schema here!
 const PORT = 3000;
 
-var app = express(); //dcexpect DisablePoweredBy
+var app = express(); 
 
-//dcexpect LimitGraphqlDepth
+
 app.use('/graphql', bodyParser.json(), graphqlExpress({
    schema: myGraphQLSchema,
   validationRules: [NoIntrospection]
@@ -17,8 +17,8 @@ app.use('/graphql', bodyParser.json(), graphqlExpress({
 
 
 
-//dcexpect LimitGraphqlDepth
-app.use('/graphql', bodyParser.json(), graphqlExpress({ //dcexpect IntrospectionEnabled
+
+app.use('/graphql', bodyParser.json(), graphqlExpress({ 
    schema: myGraphQLSchema,
  // validationRules: [NoIntrospection]
 }));
