@@ -6,7 +6,7 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     playground: true,
-    validationRules: [ depthLimit(10) ],
+    validationRules: [depthLimit(10)],
     introspection: true,
     context: ({ req, res }) => ({
       headers: req.headers,
