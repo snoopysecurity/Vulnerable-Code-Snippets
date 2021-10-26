@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 import { graphqlExpress } from 'graphql-server-express';
 import NoIntrospection from 'graphql-disable-introspection';
 
+import depthLimit from 'graphql-depth-limit'
+
 const myGraphQLSchema = MySessionAwareGraphQLSchema;// ... define or import your schema here!
 const PORT = 3000;
 
