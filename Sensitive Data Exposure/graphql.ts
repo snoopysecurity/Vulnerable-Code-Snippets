@@ -20,6 +20,6 @@ app.use('/graphql', bodyParser.json(), graphqlExpress({
 
 app.use('/graphql', bodyParser.json(), graphqlExpress({ 
    schema: myGraphQLSchema,
- // validationRules: [NoIntrospection]
+   validationRules: [ depthLimit(10) ]
 }));
 app.listen(PORT)
