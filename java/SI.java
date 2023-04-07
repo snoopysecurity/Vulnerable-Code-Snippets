@@ -1,9 +1,9 @@
-package org.joychou.controller;
+package org.controller;
 
 
-import org.joychou.mapper.UserMapper;
-import org.joychou.dao.User;
-import org.joychou.security.SecurityUtil;
+import org.mapper.UserMapper;
+import org.dao.User;
+import org.security.SecurityUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,11 +14,6 @@ import java.sql.*;
 import java.util.List;
 
 
-/**
- * SQL Injection
- *
- * @author JoyChou @2018.08.22
- */
 
 @SuppressWarnings("Duplicates")
 @RestController
