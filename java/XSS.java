@@ -1,4 +1,4 @@
-package org.joychou.controller;
+package org.controller;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
