@@ -26,7 +26,6 @@ jobs:
       - name: Run Snyk Code
         run: |
           snyk code test --sarif  > results.sarif
-          cat results.sarif
         continue-on-error: false
       - name: Upload SARIF report to DDOG
         run: |
