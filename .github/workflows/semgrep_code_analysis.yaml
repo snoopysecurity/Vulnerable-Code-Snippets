@@ -20,7 +20,7 @@ jobs:
         run: |
           python3 -m pip install semgrep
       # Run Snyk Code
-      - name: Run Snyk Code
+      - name: Run Semgrep Code
         run: |
           semgrep scan --config auto --sarif --output results.sarif
         continue-on-error: false
