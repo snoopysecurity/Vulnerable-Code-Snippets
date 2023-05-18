@@ -1,0 +1,33 @@
+name: "Semgrep Code Scan"
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  Pipeline-Job:
+    # Configure Environment
+    name: 'Semgrep Code Scan'
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout Code
+      - name: Checkout Code
+        uses: actions/checkout@v1
+
+      # Install Semgrep
+      - name: Install Semgrep
+        run: |
+          python3 -m pip install semgrep
+      # Run Snyk Code
+      - name: Run Snyk Code
+        run: |
+          semgrep scan --config auto --sarif --output results.sarif
+        continue-on-error: false
+      - name: Upload SARIF report to DDOG
+        run: |
+          npm install -g @datadog/datadog-ci
+          datadog-ci sarif upload results.sarif --service vulnerabilities-semgrep-test --env drodriguezhdez
+        env:
+          DD_SITE: datad0g.com
+          DD_API_KEY: '${{secrets.DATADOG_STAGING_API_KEY}}'
