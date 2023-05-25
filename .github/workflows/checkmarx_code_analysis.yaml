@@ -1,0 +1,32 @@
+name: "Checkmarx Code Scan"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Pipeline-Job:
+    # Configure Environment
+    name: 'Checkmarx Code Scan'
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout Code
+      - name: Checkout Code
+        uses: actions/checkout@v1
+
+      # Scan code with Checkmarx
+      - name: Checkmarx CxFlow Action
+        uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.3
+        with:
+          project: GithubActionTest
+          checkmarx_url: ${{ secrets.CHECKMARX_URL }}
+          checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
+          checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
+          checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
+      - name: Upload SARIF report to DDOG
+        run: |
+          npm install -g @datadog/datadog-ci
+          datadog-ci sarif upload cx.sarif --service vulnerabilities-checkmarx-test --env drodriguezhdez
+        env:
+          DD_SITE: datad0g.com
+          DD_API_KEY: '${{secrets.DATADOG_STAGING_API_KEY}}'

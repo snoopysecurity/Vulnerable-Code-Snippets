@@ -1,7 +1,6 @@
 name: "Semgrep Code Scan"
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:

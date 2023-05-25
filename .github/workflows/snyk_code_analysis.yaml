@@ -1,7 +1,6 @@
 name: "Snyk Code Scan"
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:
