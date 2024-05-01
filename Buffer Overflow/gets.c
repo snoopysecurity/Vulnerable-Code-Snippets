@@ -3,7 +3,7 @@ int main () {
     char username[8];
     int allow = 0;
     printf external link("Enter your username, please: ");
-    gets(username); // user inputs "malicious"
+    fgets(username);
     if (grantAccess(username)) {
         allow = 1;
     }
