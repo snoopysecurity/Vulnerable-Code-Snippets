@@ -1,0 +1,32 @@
+on:
+   push:
+    branches:
+      - main
+jobs:
+  SAST-Scan:
+    # Use the appropriate runner for building your source code.
+    # Use Windows runner for projects that use msbuild. Additional changes to RUN commands will be required.
+    runs-on: ubuntu-latest
+ 
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3 #3.5.2
+      # Scan code with Checkmarx
+      - name: Checkmarx CxFlow Action
+        uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.9 
+        with:
+          project: ITDG-PYTHON-SOLUTIONS
+          team: /CxServer/Github/ITDataGovernance
+          #          checkmarx_url: ${{ secrets.CHECKMARX_URL }}
+          checkmarx_url: https://cxsast.amerisourcebergen.com
+          checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
+          checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
+          #           sca_api_url: https://cxsast.amerisourcebergen.com/CxRestAPI/auth/
+          scanners: sast
+          checkmarx_client_secret: '${{ vars.CHECKMARX_CLIENT_SECRET }}'
+      # Upload SARIF report for CodeQL / Security Alerts PRocessing
+#       - name: Upload SARIF file
+#         uses: github/codeql-action/upload-sarif@7df0ce34898d659f95c0c4a09eaa8d4e32ee64db #V2.2.12
+#         with:
+#           sarif_file: cx.sarif
