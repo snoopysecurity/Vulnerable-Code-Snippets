@@ -10,7 +10,7 @@ router.post('/customers/register', async (req, res) => {
     const client = await MongoClient.connect(url, { useNewUrlParser: true })
         .catch(err => { console.log(err); });
     if (!client) {
-        return res.json({ status: "Error" });
+        return res.json({ status: "Error Message" });
     }
     const db = client.db(config.MONGODB_DB_NAME);
     const customers = db.collection("customers")
@@ -19,7 +19,7 @@ router.post('/customers/register', async (req, res) => {
     customers.insertOne(myobj, function (err) {
         if (err) throw err;
         console.log("user registered");
-        res.json({ status:"success", "message": "user inserted" })
+        res.json({ status:"success message", "message": "user inserted" })
         db.close();
     });
     
